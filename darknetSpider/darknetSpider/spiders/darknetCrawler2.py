@@ -98,7 +98,7 @@ class darknetCrawler(scrapy.Spider):
             self.log(f'Saved file {filename}')
         links = response.xpath("//code/text()").extract()
         if response.xpath("//a/@href").extract() != None:
-            for link in response.xpath("//a/@href[contains(.,'CVE')]").extract():
+            for link in response.xpath("//a/@href").extract():
                 links.append(link)
         yield { 'URL': response.url}
         print(links)
